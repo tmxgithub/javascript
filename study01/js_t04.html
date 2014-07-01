@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi,maximum-scale=1.0,minimum-scale=1.0" />
+<title>JS Study 第4回</title>
+<!-- <script src="02.js"></script> -->
+</head>
+<body>
+<!-- <p><input type="botton" value="ボタン" onclick="clipcopy(this.value);"></p> -->
+<script>
+// オブジェクトについて
+//var str = new String('こんにちわ');
+/*
+var str = 'こんにちわ'//リテラル
+document.write(str);
+*/
+
+// Function
+/*
+var triangle = new Function('a' , 'b' , 'return a * b / 2;');
+var area = triangle(5 , 3);
+document.write('三角形の面積は' + area + 'です。');
+*/
+
+// RegExp 正規表現
+/*var re = new RegExp('exp' , 'i');
+word = 'HogeExphoge';
+if(word.match(/exp/i)){
+    document.write('expが見つかりました。');
+}
+*/
+/*
+function clipcopy(s){
+    try{
+        window.clipboardData.setData('Text' , s);
+    }
+    catch(e){
+        alert(e.message);
+    }
+}
+
+*/
+
+// オブジェクトオブジェクト
+/*var card1 = new Object();
+card1.reality = 4;
+card1.name = 'ドラゴン';
+card1.atk = '9999';
+card1.def = '9999';
+card1.src = '/img/card/num_1';
+card1.fn1 = function() {alert('fn1実行')}
+*/
+//リテラル
+var card1 = {
+    reality: 4,
+    name: 'ドラゴン',
+    atk: '9999',
+    def: '9999',
+    src: '/img/card/num_1',
+    fn1 : function() {alert('fn1実行')},
+}
+//document.write(card1.atk);
+card1.fn1();
+
+</script>
+
+</body>
+</html>

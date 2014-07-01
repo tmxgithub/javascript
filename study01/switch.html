@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no">
+<title>switch</title>
+<style>
+li.touch{
+    background-color: #ccc;
+}
+li.on{
+    color: red;
+}
+</style>
+</head>
+<body>
+<ul>
+    <li>List</li>
+    <li>List</li>
+    <li>List</li>
+    <li>List</li>
+    <li>List</li>
+</ul>
+<script>
+(function(g, d){
+    var lis = d.querySelectorAll('li'),
+        i;
+    for (i = lis.length - 1; i >= 0; i--) {
+        lis[i].addEventListener('touchstart', classSwitch, false);
+        lis[i].addEventListener('touchmove', classSwitch, false);
+    };
+    function classSwitch(e){
+        if(e.type=='touchstart'){
+            e.target.addEventListener('touchend', classSwitch, false);
+            e.target.classList.add('touch');
+        }
+        else if(e.type=='touchmove'){
+            e.target.removeEventListener('touchend', classSwitch, false);
+            e.target.classList.remove('touch');
+        }
+        else if(e.type=='touchend'){
+            e.target.classList.remove('touch');
+            e.target.classList.toggle('on')
+            e.target.removeEventListener('touchend', classSwitch, false);
+        }
+    }
+})(this, this.document);
+</script>
+</body>
+</html>

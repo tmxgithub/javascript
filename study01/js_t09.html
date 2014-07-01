@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi,maximum-scale=1.0,minimum-scale=1.0" />
+</head>
+<body>
+<audio id="BGM" class="play" autoplay>
+   <source src="http://cc.dev.gree.jp/product.gree.net/jp/sp/leviathan/swf/sound.mp3" type="audio/mp3">
+   <p>※ご利用のブラウザでは再生することができません。</p>
+</audio>
+<button type="button" id="audioControler">ストップ</button>
+
+<script>
+// ここに、audioControlerのスクリプトを記述
+// audioControlerは、ストップ/再生のスイッチです。スイッチする際にラベルも切り替わります
+// 再生・停止はaudio要素を取得し、その要素のplay/pauseメソッドを呼ぶ（ex: bgmElm.play(); //bgmElmにaudio要素を代入した前提）
+
+(function (g){
+    var audioElm = document.getElementById('BGM');
+    var audioBtn = document.getElementById('audioControler');
+    audioBtn.addEventListener('click', audioSw, false);
+    function audioSw(){
+        if(audioElm.paused == false){
+            audioStop();
+        }else{
+            audioPlay();
+        }
+    }
+    function audioStop(){
+        audioElm.pause();
+        audioBtn.innerHTML = '再生';
+    }
+    function audioPlay(){
+        audioElm.play();
+        audioBtn.innerHTML = 'ストップ';
+    }
+    var bgmAudio = {
+        audioElm: audioElm,
+        audioBtn: audioBtn,
+        audioStop: audioStop
+    }
+    g.bgmAudio = bgmAudio;
+})(window);
+
+/*
+課題２：cookieを使う
+1. オートプレイは初回起動時のみとする
+2. スイッチの状態は、次回訪問時にも引き継がれる
+*/
+(function (){
+    var time,
+        date;
+
+    time = new Date();
+    time.setTime(time.getTime() + 30 * 24 * 60 * 60 * 1000);
+    date = time.toGMTString();
+
+    if(document.cookie.indexOf('visited=true') < 0){
+        document.cookie = "visited=true; expires=" + date;
+    }else if(document.cookie.indexOf('visited=true') >= 0){
+        bgmAudio.audioStop();
+    }
+})();
+
+/*Cookieの使い方
+・cookieはクライアントサイドに簡易に保持できる文字列
+・document.cookie でアクセスできる
+　・複数の情報がセミコロン区切りで羅列された文字列として取得できる
+　　ex) dataName1=value1; dataName2=value2; dataName3=value3
+・cookieでは、重要な情報は扱うべきでない
+　・当てにならない
+　　・ユーザー任意で無効にしたり削除したりできる
+　　・ブラウザ別に保持されるので、別のブラウザからは呼び出せない
+　・悪用される可能性がある
+・cookieに情報を書き込む
+　・代入演算子で書き込みたい文字列を記述する
+　　ex) document.cookie = 'visited=1; expires=Tue Apr 16 2013 10:25:12 GMT+0900 (JST)';
+　・書き込む属性
+　　・name=value
+　　　・既に重複するnameが存在する場合は、それを上書きする
+　　・path or domain=value
+　　　・path: 有効なpathを指定
+　　　・domain: 有効なdomainを指定
+　　　・指定なし: 現在開いているページのみ有効
+　　・max-age or expires=value
+　　　・max-age: 有効期限（秒数指定）
+　　　・expires: 有効期限（日付指定）
+　　　・指定なし: 現在アクセスしている時のみ有効
+　　・secure（値なし）
+　　　・指定あり: https接続でのみ有効メモ*/
+
+/*
+課題3
+BGM切替ステータスを再訪問時に引き継がれるよう実装してみてください。
+*/
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi,maximum-scale=1.0,minimum-scale=1.0" />
+<title>JS Study 第2回</title>
+<!-- <script src="02.js"></script> -->
+</head>
+<body>
+<script>
+//条件分岐
+/*
+    var dogName = "Bob";
+    if (dogName === "John") {
+        document.write(dogName + " is my dog");
+    } else {
+        document.write("OMG! " + dogName + " is not my dog!!");
+    }
+*/
+//繰り返し
+/*
+    var max = 10;
+    var i = 0;
+    var numbers = 0;
+    for (i; i < max; i++){
+        numbers += i;
+    }
+    document.write(numbers);
+*/
+//１から100までの数を出力しなさい。ただし3で割れるときは”Fizz”5で割れるときは"Buzz"その両方で割れるときは"FizzBuzz"と出力しなさい。
+/*
+    var max = 100;
+    var i = 1;
+    for (i; i <= max; i++){
+        if ( i % 3 == 0 && i % 5 == 0) {
+            document.write("FizzBuzz" + "<br>");
+        } else if(i % 3 == 0) {
+            document.write("Fizz" + "<br>");
+        } else if(i % 5 == 0){
+            document.write("Buzz" + "<br>");
+        } else {
+            document.write(i + "<br>");
+        }
+    }
+*/
+//3の倍数と3のつく数字の時だけバカになるロジック
+    var i,
+        str;
+    for (i = 1; i <= 100; i++){
+        str = String(i);
+        if (i % 3 == 0 && 0 >= str.indexOf("3")){
+            document.write("Hoge");
+        } else {
+            document.write(i);
+        }
+        document.write("<br>");
+    }
+
+
+
+</script>
+</body>
+</html>

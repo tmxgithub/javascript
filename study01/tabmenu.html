@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no">
+<title>Tab Menu</title>
+<style>
+.current{
+color: red;
+}
+</style>
+</head>
+<body>
+<ul class="tabMenu">
+    <li>タブ1</li>
+    <li>タブ2</li>
+    <li>タブ3</li>
+    <li>タブ4</li>
+    <li>タブ5</li>
+</ul>
+<div class="tabContents">
+    <div class="box">タブコンテンツ1</div>
+    <div class="box">タブコンテンツ2</div>
+    <div class="box">タブコンテンツ3</div>
+    <div class="box">タブコンテンツ4</div>
+    <div class="box">タブコンテンツ5</div>
+</div>
+<script>
+'use strict';
+function tabMenu(tabElms, boxElms, currentIndex){
+    var tabElms = document.querySelectorAll(tabElms),
+        boxElms = document.querySelectorAll(boxElms),
+        i,
+        il = tabElms.length;
+
+    function tabSwitch(index){
+        for(i=0; i<il; i++){
+            if(i==index){
+                tabElms[i].classList.add('current');
+                boxElms[i].classList.add('current');
+                boxElms[i].style.display = 'block';
+            }else{
+                tabElms[i].classList.remove('current');
+                boxElms[i].classList.remove('current');
+                boxElms[i].style.display = 'none';
+            }
+        }
+    }
+    tabSwitch(currentIndex);
+    for(i=0; i<il; i++){
+        (function(j){
+            tabElms[j].addEventListener('click', function(){tabSwitch(j);}, false);
+        })(i);
+    }
+}
+tabMenu('.tabMenu li', '.tabContents .box', 0);
+</script>
+</body>
+</html>

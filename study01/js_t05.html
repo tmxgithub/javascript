@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi,maximum-scale=1.0,minimum-scale=1.0" />
+</head>
+<body>
+<script>
+//https://confluence.gree-office.net/pages/viewpage.action?pageId=82020592
+//各自ローカルでリテラル表記に置き換えてください↓
+//var obj = new Object();
+//obj.property1 = "value1";
+//obj.property2 = "value2";
+var obj = {
+    property1: 'value1',
+    property2: 'value2'
+}
+//var str = new String('hoge');
+var str = 'hoge';
+//var num = new Number(123);
+var num = 123;
+//var x = new Boolean(false);
+var x = false;
+//var arr = new Array('hoge', 'fuga');
+var arr = ['hoge', 'fuga'];
+//var fn = new Function('argument1', 'argument2', 'alert("hoge");');
+var fn = function(argument1,argument2){
+    alert("hoge");
+};
+//var re = new RegExp('hoge', 'i');
+var re = /hoge/i;
+
+//日付と時間を扱う
+var now = new Date();
+var hour = now.getHours();
+var minite = now.getMinutes();
+var second = now.getSeconds();
+document.write('現在の時刻は' + hour + ':' + minite + ':' + second + 'です。');
+
+//math オブジェクト
+var r = 10;
+var area = r * r * Math.PI;
+document.write(area);
+document.write("<br>");
+
+var num = Math.floor(Math.random() * 37); //0~9の整数
+document.write("Loto 7の購入ナンバーは" + num);
+document.write("<br>");
+
+//配列
+var cats = new Array(3);
+cats[0] = 'みけ';
+cats[1] = 'あけ';
+cats[2] = 'もけ';
+cats[3] = 'けけ';
+var cats = ['みけ', 'あけ', 'もけ','けけ'];
+document.write(cats[3]);
+document.write("<br>");
+
+//
+document.write('近所の猫は');
+for(var i = 0; i < cats.length; i++){
+    document.write(cats[i] + '、');
+}
+document.write('です');
+document.write("<br>");
+document.write(cats.length);
+
+</script>
+
+</body>
+</html>

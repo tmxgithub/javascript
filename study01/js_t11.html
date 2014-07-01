@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi,maximum-scale=1.0,minimum-scale=1.0" />
+<link rel="stylesheet" href="common/css/reset.css" />
+<link rel="stylesheet" href="js_t11.css" />
+</head>
+<body>
+<div id="container">
+
+    <div id="slotBox">
+        <div id="coingauge"></div>
+        <ul id="realBox">
+            <li class="real real1"><b>1</b></li>
+            <li class="real real2"><b>2</b></li>
+            <li class="real real3"><b>3</b></li>
+        </ul>
+        <p id="charge"></p>
+        <ul id="betCntBox">
+            <li id="betCnt3"><img src="img_no1.png" width="20"></li>
+            <li id="betCnt2"><img src="img_no2.png" width="20"></li>
+            <li id="betCnt1"><img src="img_no3.png" width="20"></li>
+        </ul>
+        <ul id="stopBtnBox">
+            <li class="stopBtn btn1"></li>
+            <li class="stopBtn btn2"></li>
+            <li class="stopBtn btn3"></li>
+        </ul>
+        <p id="lever"></p>
+        <img class="panel" src="panelimg.jpg" width="200">
+        <div id="exitBox">0</div>
+    </div><!-- /#slotBox -->
+
+    <div id="alert01" class="alertBox">
+        <p>3betしてからレバーを押してください。</p>
+        <p class="tapAnimation">TAP</p>
+    </div><!-- /.slotBox -->
+
+</div><!-- /#container -->
+
+<script>
+/*
+課題
+各自作りたいものを作る
+
+*最初持ちコインは50枚
+*1づつBET
+**持ちコインが1BETごとに減って表示
+**3BETしたらBETできない
+**3BETならスロットレバークリックできる
+**1BET2BETだったら、BETたりないアラート
+
+*レバーをクリックしたら
+**レールが回るランダム表示
+***777が揃ったらコイン100枚ゲット（）
+[***3,5,7がどれかひとつでコイン6枚ゲット（）]
+***0がひとつでもあればもう一回（）
+*コインが0枚になったらGAMEOVER
+*/
+
+
+/*(function(){*/
+    var firstCoin = 50;
+    var coingauge = document.getElementById('coingauge');
+    var charge = document.getElementById('charge');
+    var lever = document.getElementById('lever');
+    var alert01 = document.getElementById('alert01');
+    var betCntSign = document.querySelectorAll('#betCntBox > li');
+    var rollBox = document.querySelectorAll('#realBox > li');
+    var stopBtnBox = document.querySelectorAll('#stopBtnBox > li');
+    var rNum = [];
+    var i;
+
+    coingauge.innerHTML = firstCoin;
+    charge.addEventListener('click', clickCnt, false);
+    //var coin = document.getElementById('coingauge').innerText;
+
+    var betcount = 0;
+    function clickCnt() {
+        betcount++;
+        j = betcount;
+        if(betCntSign[2].className == 'bet'){
+            alert('レバーを押してください');
+        } else {
+            for(i = 0; i < betCntSign.length; i++){
+                betCntSign[i].className = 'bet';
+            }
+            //coingauge.innerHTML = document.getElementById('coingauge').innerText - j;
+        }
+    }
+
+
+    for(i=0; i<=9; i++){
+        rNum[i] = i;
+    };
+    /*for(i=0; i<=2; i++){
+        stopBtn[i] = i;
+    };*/
+    lever.addEventListener('click', leverOn, false);
+    function leverOn() {
+        var betCnt = document.querySelectorAll('#betCntBox > li');
+        if(betCntSign[2].className != 'bet'){
+            alert01.classList.add('alertAnime');
+        } else {
+            lever.className = 'on';
+            setTimeout( function() {
+                lever.className = "off";
+            }, 1000);
+            betCnt[0].classList.remove("bet");
+            betCnt[1].classList.remove("bet");
+            betCnt[2].classList.remove("bet");
+            stopRoll1 = setInterval("roll1()",100);
+            stopRoll2 = setInterval("roll2()",100);
+            stopRoll3 = setInterval("roll3()",100);
+        }
+
+    }
+
+    alert01.addEventListener('click', closeAlert,false);
+    function closeAlert(){
+        alert01.classList.remove('alertAnime');
+    }
+
+    function roll1() {
+        var num1 = Math.floor(Math.random() * rNum.length);
+        rollBox[0].innerHTML = num1;
+    }
+    function roll2() {
+        var num2 = Math.floor(Math.random() * rNum.length);
+        rollBox[1].innerHTML = num2;
+    }
+    function roll3() {
+        var num3 = Math.floor(Math.random() * rNum.length);
+        rollBox[2].innerHTML = num3;
+    }
+
+    stopBtnBox[0].addEventListener('click', stopRoll1, false);
+    stopBtnBox[1].addEventListener('click', stopRoll2, false);
+    stopBtnBox[2].addEventListener('click', stopRoll3, false);
+    function stopRoll1() {
+        clearInterval(stopRoll1);
+    }
+    function stopRoll2() {
+        clearInterval(stopRoll2);
+    }
+    function stopRoll3() {
+        clearInterval(stopRoll3);
+    }
+
+
+/*})();*/
+
+
+</script>
+</body>
+</html>

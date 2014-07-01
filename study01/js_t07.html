@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi,maximum-scale=1.0,minimum-scale=1.0" />
+</head>
+<body>
+<ul id="thumbs">
+    <li><img src="hoge.jpg"></li>
+    <li><img src="fuga.jpg"></li>
+    <li><img src="piyo.jpg"></li>
+</ul>
+<div id="imgView"></div>
+<script>
+//
+var elms = document.getElementById('thumbs');
+var imgs = elms.getElementsByTagName('img');
+var imgBox= document.getElementById('imgView');
+var imgElm = document.createElement('img');
+function imgClick(){
+    imgBox.appendChild(imgElm);
+}
+/*
+for(var i = 0; i < imgs.length; i++){
+    imgs[i].addEventListener('click', imgClick, false);
+    imgs[i].addEventListener('click', imgSw, false);
+}
+function imgSw(){
+    imgElm.setAttribute("src",this.getAttribute("src"));
+}
+*/
+var imgSrcs = new Array();
+for(var i = 0; i < imgs.length; i++){
+    (function(j){
+        imgs[i].addEventListener('click', imgClick, false);
+        imgs[i].addEventListener('click', imgSw, false);
+        imgSrcs[i] = imgs[i].getAttribute('src');
+        function imgSw(){
+            imgElm.setAttribute("src",imgSrcs[j]);
+        }
+    })(i);
+}
+</script>
+</body>
+</html>

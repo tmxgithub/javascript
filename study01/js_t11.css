@@ -1,0 +1,213 @@
+@charset "UTF-8";
+
+#container {
+    position: relative;
+}
+#slotBox {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    margin: 10px auto;
+    background: #b59f56;
+}
+#charge {
+    position: absolute;
+    top: 130px;
+    left: 0px;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #ff0;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    background: #ff0;
+    color: #000;
+}
+#charge::after {
+    display: block;
+    content:"BET";
+    position: absolute;;
+    top: 8px;
+    left: 3px;
+    font-size: 10px;
+}
+#betCntBox {
+    position: absolute;
+    top: 66px;
+    left: 2px;
+    width: 15px;
+    margin: 0 auto;
+}
+#betCntBox li{
+    width: 20px;
+    height: 20px;
+    margin-bottom: 2px;
+    //border: 1px solid #000;
+    //-webkit-border-radius: 5px;
+    //border-radius: 5px;
+    //background: #000;
+    text-align: center;
+    list-style-type: none;
+}
+#betCntBox li:last-child {margin-right: 0;}
+#betCntBox li img { -webkit-filter: saturate(10%); }
+#betCntBox li.bet img { -webkit-filter: saturate(100%); }
+#coingauge {
+    width: 200px;
+    height:50px;
+    background: #2F2D1D;
+    color: #ff0;
+    font-size: 42px;
+    line-height: 50px;
+    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    text-align: center;
+}
+#coingauge:after{
+    content:' ';
+    display:block;
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    height:50px;
+    z-index:100;
+    background-image:-webkit-linear-gradient(#2f2d1d 1px, transparent 0px),-webkit-linear-gradient(0, #2f2d1d 1px, transparent 1px);
+    background-size:2px 2px, 2px 2px;
+}
+#lever {
+    position: absolute;
+    top: 142px;
+    right: 5px;
+}
+#lever{
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #000;
+    color: #fff;
+}
+#lever::after {
+    display: block;
+    content:"";
+    position: absolute;;
+    top: 20px;
+    left: 6px;
+    font-size: 12px;
+}
+#lever.on {
+    -webkit-animation: leverOn linear .4s;
+}
+@-webkit-keyframes leverOn{
+    0%{ top: 142px; }
+    50%{ top: 150px; }
+    100%{ top: 142px; }
+}
+
+#realBox {
+    width: 153px;
+    margin: 15px auto 5px;
+}
+#realBox::after,
+#stopBtnBox::after{content: ""; display: block; clear: both; height:0; visibility:hidden;}
+#realBox .real{
+    overflow: hidden;
+    float: left;
+    width: 45px;
+    height: 60px;
+    border: 2px solid #968756;
+    margin-right: 3px;
+    background: #6a5a24;
+    list-style-type: none;
+    line-height: 60px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+}
+#realBox .real > b{
+    display: block;
+}
+#realBox .real:last-child {margin-right: 0;}
+#realBox .real1{
+
+}
+#realBox .real2{
+
+}
+#realBox .real2{
+
+}
+#stopBtnBox {
+    width: 153px;
+    margin: 0 auto 16px;
+}
+#stopBtnBox .stopBtn{
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin: 0 15px;
+    list-style-type: none;
+    line-height: 60px;
+    text-align: center;
+    font-size: 35px;
+    border: 1px solid #000;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #5f5c53;
+}
+#stopBtnBox .stopBtn:last-child {margin-right: 0;}
+.panel {
+
+}
+#exitBox {
+    width: 180px;
+    height: 40px;
+    margin: 0 auto;
+    border: solid #968756 2px;
+    background: #6a5a24;
+    color: #000;
+    text-align: center;
+    line-height: 40px;
+}
+.alertBox {
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin-left: -110px;
+    width: 220px;
+    padding: 20px 4px 12px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: solid #000 4px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 10px;
+    text-align: center;
+    line-height: 1.6;
+    opacity: 0;
+}
+.alertBox.alertAnime {
+    display: block;
+    -webkit-animation: alertBox ease-in .9s forwards;
+}
+@-webkit-keyframes alertBox{
+    0%{ opacity: 0; -webkit-transform: scale(0); }
+    10%{ opacity: 1; -webkit-transform: scale(1.08); }
+    15%{ opacity: 1; -webkit-transform: scale(1); }
+    100%{ opacity: 1; -webkit-transform: scale(1); }
+}
+#alert01 {
+}
+.tapAnimation {
+    color: #f00;
+    line-height: 1.5;
+    -webkit-animation: tapAnimation ease-in .9s infinite;
+}
+@-webkit-keyframes tapAnimation{
+    0%{ opacity: 0;  }
+    50%{ opacity: 1;  }
+    100%{ opacity: 0; }
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi,maximum-scale=1.0,minimum-scale=1.0" />
+</head>
+<body>
+<div id="hoge">
+    ほげほげ0
+</div>
+<div id="fuga">
+    ドム1
+</div>
+<div id="piyo">
+    ざく2
+</div>
+<div class="yoyo">
+    ざく3
+</div>
+<script>
+//
+/*var hoge = document.getElementById('hoge');
+alert(hoge.innerHTML);
+*/
+
+/*var divs =  document.getElementsByTagName('div');
+alert(divs[0].innerHTML);
+divs[0].style.color = 'red';
+divs[1].style.color = 'green';
+divs[2].style.width = '20px';
+*/
+
+/*var divs =  document.getElementsByTagName('div');
+for(var i = 0; i < divs.length; i++){
+    var d = divs[i];
+    if(d.id == 'fuga'){
+        d.style.backgroundColor = '#f00'
+    } else {
+        d.style.backgroundColor = '#000'
+    }
+}
+*/
+/*var divs =  document.getElementsByTagName('div');
+for(var i = 0; i < divs.length; i++){
+    var d = divs[i];
+    if(d.getAttribute('class') == 'yoyo'){
+        d.style.backgroundColor = '#f00'
+    } else {
+        d.style.backgroundColor = '#000'
+    }
+}*/
+
+/*var hoge = document.getElementById('piyo');
+hoge.addEventListener('click', function(){
+    hoge.style.paddingTop = '50px'
+    }, false);
+*/
+var hoge = document.getElementById('hoge');
+var colors = ['red', 'black', 'blue', 'green', 'white'];
+hoge.addEventListener('click', function aaaa(){
+    var tRandom = Math.floor(Math.random() * 10);//10の配列がないとだめ
+    hoge.style.backgroundColor = colors[tRandom];
+},false);
+
+
+
+</script>
+</body>
+</html>

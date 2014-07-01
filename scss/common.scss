@@ -1,0 +1,13 @@
+//Compassのメインモジュールをインポート
+@import "compass";
+
+// Global reset
+@import "reset";
+
+// _base.scss をインポート
+@import "base";
+
+// モジュール
+@import "component/gauge";
+
+//

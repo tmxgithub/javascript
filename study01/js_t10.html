@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi,maximum-scale=1.0,minimum-scale=1.0" />
+</head>
+<body>
+<audio id="BGM" class="play" autoplay>
+   <source src="http://cc.dev.gree.jp/product.gree.net/jp/sp/leviathan/swf/sound.mp3" type="audio/mp3">
+   <p>※ご利用のブラウザでは再生することができません。</p>
+</audio>
+<button type="button" id="audioControler">ストップ</button>
+
+<script>
+/*
+課題3
+BGM切替ステータスを再訪問時に引き継がれるよう実装してみてください。
+*/
+(function (g){
+    var audioElm = document.getElementById('BGM');
+    var audioBtn = document.getElementById('audioControler');
+
+    /* 再生・ストップボタンの制御 */
+    audioBtn.addEventListener('click', audioSw, false);
+    function audioSw(){
+        if(audioElm.paused == false){
+            audioStop();
+        }else{
+            audioPlay();
+        }
+    }
+    function audioStop(){
+        document.cookie = "playerStatus=off;";
+        audioElm.pause();
+        audioBtn.innerHTML = '再生';
+    }
+    function audioPlay(){
+        document.cookie = "playerStatus=on;";
+        audioElm.play();
+        audioBtn.innerHTML = 'ストップ';
+    }
+    var bgmAudio = {
+        audioElm: audioElm,
+        audioBtn: audioBtn,
+        audioStop: audioStop,
+        audioPlay: audioPlay
+    }
+    g.bgmAudio = bgmAudio;
+})(window);
+
+(function (){
+    var visitedOn = 'visited=true',
+    playerStatusOn = 'playerStatus=on',
+    playerStatusOff = 'playerStatus=off',
+    time,
+    date;
+
+    time = new Date();
+    time.setTime(time.getTime() + 30 * 24 * 60 * 60 * 1000);
+    date = time.toGMTString();
+
+    /* 訪問時の処理 */
+    if(navigator.cookieEnabled){
+        if(document.cookie.indexOf(visitedOn) < 0){
+            document.cookie = "visited=true; expire=" + date;
+        }else if(document.cookie.indexOf(visitedOn) >= 0){
+            if(document.cookie.indexOf(playerStatusOn) >= 0){
+                bgmAudio.audioPlay();
+            }else if(document.cookie.indexOf(playerStatusOff) && document.cookie.indexOf(visitedOn) >= 0){
+                bgmAudio.audioStop();
+            }
+        }
+    }
+
+})();
+/*
+    if(document.cookie.indexOf('playerStatus=on') >= 0){
+        console.log('onでっせ');
+        audioPlay();
+    }else if(document.cookie.indexOf('playerStatus=off') >= 0){
+        console.log('offでっせ');
+        audioStop();
+    }
+*/
+
+/*
+    if(navigator.cookieEnabled){
+        if(document.cookie.indexOf('visited=true') < 0){
+            document.cookie = "visited=true; expire=" + date;
+        }else if(document.cookie.indexOf('visited=true') >= 0){
+            bgmAudio.audioStop();
+        }
+    }
+*/
+
+</script>
+</body>
+</html>

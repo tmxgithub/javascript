@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi,maximum-scale=1.0,minimum-scale=1.0" />
+</head>
+<body>
+<script>
+//スコープについて
+/*
+(function(g){
+    function cone(r , h){
+        var volume = 3.14 * r * r * h / 3;
+        return volume;
+    }
+    var keisan = {
+        cone: cone
+    }
+    g.keisan = keisan;
+}(window));
+
+document.write(keisan.cone(5, 5));
+*/
+(function(g){
+    function hoge(){
+        return 3;
+    }
+    var fkJS = {
+        hoge: hoge
+    }
+    g.keisan = fkJS;
+}(window));
+function fuga(){
+    alert(keisan.hoge() * 3);
+}
+fuga();
+
+
+
+</script>
+</body>
+</html>

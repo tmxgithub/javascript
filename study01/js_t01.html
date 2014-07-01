@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi,maximum-scale=1.0,minimum-scale=1.0" />
+<script src="01.js"></script>
+</head>
+<body>
+<br>
+<button type="button" onclick="answerDate();">今日は何日ですか？</button>
+<script>
+    var a = 2;
+    document.write(a);
+
+    var a = 2;
+    var b = 3;
+    var c = a * b;
+    document.write(c);
+
+    var a = 123,
+        b = 1.2,
+        c = -20;
+
+        document.write(1 - 5);
+        document.write(1 * 5);
+        document.write(1 / 5);
+        document.write(1 + 5);
+        document.write(1 % 5);
+        var a = -10;
+        document.write(-a);
+
+//無限の話
+var a = 30 / 0;
+document.write(a);
+
+//非数 NaN (Not a Number)
+var a = 'こんにちわ' * 10;
+document.write(a);
+
+//String 文字列
+var s = 'こんにちわ';
+document.write(s);
+
+//リテラル→　変数ではない生の数値や文字列のこと
+
+var s = 'こんにちわ' + 'いい天気'
+    document.write(s);
+
+    var s = 'リテラルは' + '\’\’シングルコーテーションで囲む';
+    document.write(s);
+
+//数値型NUmber:123
+//文字列String:'こんにちわ'
+//論理値型Boolean:true/false
+//未定義型:undefined
+//ヌル型:null
+//オブジェクト型:後日
+//
+var dogname = 'たろ';
+    document.write(typeof dogname);
+
+var price = window.prompt('価格','');
+zeikomi = price * 1.05;
+document.write('税込' + zeikomi + 'です');
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
